@@ -624,6 +624,12 @@ form {
         bottom: 5%;
         transform: translateY(-50%);
         background-image: url('../images/quotesRight.svg'); // Replace with the actual path to your SVG
+
+        @include breakpoint(sm, max) {
+          right: 12%;
+          bottom: 10%;
+           
+         }
       }
     }
   }
