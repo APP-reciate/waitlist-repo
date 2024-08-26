@@ -89,6 +89,10 @@
   bottom: 15px;
   right: 20px;
   transform: translate(-20px, -50%);
+  @include breakpoint(sm, max) {
+    right: 1px;
+    bottom: 10px;
+  }
 
   .toggle-checkbox {
     justify-content: center;
