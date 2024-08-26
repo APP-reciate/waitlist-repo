@@ -10,7 +10,7 @@
   transform: translate(-50%, -50%);
   width: 688.48px;
   z-index: 99;
-  margin: 0 auto;
+  // margin: 0 auto;
   margin-top: 60px;
   box-shadow: 8px 0 25px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -46,6 +46,7 @@
     border-radius: 14.01px;
     border: none;
     margin: 5px 0;
+    color: #1E1E1E;
 
     @include breakpoint(xxl, max) {
       width: 140px;
@@ -73,12 +74,16 @@
 
   }
   @include breakpoint(sm, max) {
-    width: 366px;
     height: 58px;
     padding: 8.71px 11.81px 8.71px 11.81px;
     border-radius: 14.92px;
     top: 5px;
-
+    width: auto; // Allow the width to be based on padding/margins
+    left: 0; // Align to the left edge
+    right: 0; // Align to the right edge
+    transform: none; // No need to center using transform
+    margin: 0 20px; // Add margin on both sides
+    margin-top: 30px;
   }
 }
 
@@ -394,6 +399,7 @@ form {
     border-radius: 18px;
     border: none;
     outline: none;
+    color: #1E1E1E;
 
     @include breakpoint(xxl, max) {
       width: 537px;
