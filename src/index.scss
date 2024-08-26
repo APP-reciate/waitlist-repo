@@ -1,0 +1,55 @@
+@import './styles/theme-variables.scss';
+
+*,::after,::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  // -webkit-font-smoothing: antialiased;
+  // vertical-align: baseline;
+  overflow-x: hidden;
+
+  @include themify($themes) {
+    background: themed('colorBodyBg');
+  }
+}
+
+body.theme-light {
+  /* Light theme styles */
+  background-color: #ffffff;
+}
+
+body.theme-dark {
+  /* Dark theme styles */
+  background-color: #2D2D2D;
+}
+
+::placeholder {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 24px;
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+}
+}
+
+// Light theme placeholder styles
+body.theme-light ::placeholder {
+  color: #808285; // Example color for light theme
+}
+
+// Dark theme placeholder styles
+body.theme-dark ::placeholder {
+  color: #D9D9D9; // Example color for dark theme
+}

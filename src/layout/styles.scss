@@ -1,0 +1,794 @@
+@import '../styles/theme-variables.scss';
+@import '../styles/breakpoints.scss';
+
+
+/*Header styles*/
+.header {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 688.48px;
+  z-index: 99;
+  margin: 0 auto;
+  margin-top: 60px;
+  box-shadow: 8px 0 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 27.47px;
+  padding: 16.02px 21.75px 16.02px 34.16px;
+  background: #1E1E1E;
+  box-shadow: 0px 4.58px 34.34px 0px #0000006B;
+
+  @include breakpoint(xxl, max) {
+    top: 35px;
+  }
+
+  .header-content {
+
+    img {
+      @include breakpoint(xxl, max) {
+        width: 168.49px;
+        height: 50px;
+      }
+    }
+  }
+  
+  .header-button {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 18.91px;
+    font-style: normal;
+    width: 160px;
+    height: 52px;
+    border-radius: 14.01px;
+    border: none;
+    margin: 5px 0;
+
+    @include breakpoint(xxl, max) {
+      width: 140px;
+      font-size: 17px;
+    }
+    @include breakpoint(sm, max) {
+      width: 113.94px;
+      height: 37.19px;
+      padding: 10.09px 9.97px 10.09px 9.97px;
+      border-radius: 9.97px;
+      font-size: 13.46px;
+    }
+  }
+
+  @include breakpoint(xxl, max) {
+    width: 500px;
+    padding: 12.02px 17.75px 12.02px 30.16px;
+    border-radius: 24px;
+
+  }
+  @include breakpoint(md, max) {
+    width: 450px;
+    padding: 12.02px 17.75px 12.02px 30.16px;
+    border-radius: 24px;
+
+  }
+  @include breakpoint(sm, max) {
+    width: 366px;
+    height: 58px;
+    padding: 8.71px 11.81px 8.71px 11.81px;
+    border-radius: 14.92px;
+    top: 5px;
+
+  }
+}
+
+// fixed toggle button
+
+.toggle-btn-section {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  transform: translate(-20px, -50%);
+
+  .toggle-checkbox {
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    .toggle-btn__input {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+
+    .toggle-btn__input-label {
+      cursor: pointer;
+      // text-indent: -9999px;
+      width: 227px;
+      height: 56px;
+      display: block;
+      border-radius: 24px;
+      position: relative;
+      padding: 8px;
+      border: none;
+      margin-top: 2px;
+      border: 1px solid #0000001A;
+      box-shadow: 0px 4px 27.9px 0px #00000026;
+
+      @include themify($themes) {
+        background-color: themed('colorToggleBg');
+      }
+
+      &::before, &::after {
+        position: absolute;
+        top: 7px;
+        left: 8px;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 20px;
+        background-repeat: no-repeat;
+        font-family: 'Outfit', sans-serif;
+        // background-size: 24px 24px;
+        color: #fff;
+
+        @include breakpoint(sm, max) {
+          top: 5px;
+          left: 6px;
+          width: 74px;
+          height: 29px;
+          border-radius: 11.93px;
+          font-size: 14.91px;
+        }
+      }
+
+      &::before {
+        content: 'Dark';
+        left: 60%;
+        top: 25%;
+        background-image: url('../images/light.svg');
+        background-position: left center;
+        padding-left: 30px; /* Space between icon and text */
+        color: #000000;
+
+        @include breakpoint(sm, max) {
+          background-image: url('../images/darkIconSmall.svg');
+          top: 12%;
+          left: 55%;
+          padding-left: 25px;
+        }
+      }
+
+      &::after {
+        content: 'Light';
+        width: 103px;
+        height: 40px;
+        padding-left: 40px;
+        border-radius: 16px;
+        transition: 0.3s;
+        // box-shadow: 0 5px 10px rgba(153, 153, 153, 0.4);
+        background-color: #2F2E41;
+        background-image: url('../images/dark.svg');
+        background-position: 20% 50%; 
+
+        @include breakpoint(sm, max) {
+          width: 74px;
+          height: 29px;
+          border-radius: 11.93px;
+          padding-left: 32px;
+          background-image: url('../images/lightIconSmall.svg');
+          background-position: 15% 50%;
+        }
+      }
+
+      @include breakpoint(sm, max) {
+        width: 167px;
+        height: 41px;
+        border-radius: 17.89px;
+      }
+    }
+
+    .toggle-btn__input:checked ~ .toggle-btn__input-label {
+      background-color: #666666;
+
+      &::before {
+        content: 'Light';
+        color: #FFFFFF;
+        top:25%;
+        left: 20px;
+        background-image: url('../images/dark.svg');
+        background-position: left center;
+
+        @include breakpoint(sm, max) {
+          background-image: url('../images/lightIconSmall.svg');
+          top: 12%;
+          left: 15px;
+        }
+      }
+
+      &::after {
+        content: 'Dark';
+        background-color: #2F2E41;
+        background-image: url('../images/DarkIconWhite.svg');
+        left: calc(100% - 8px);
+        transform: translateX(-100%);
+
+        @include breakpoint(sm, max) {
+          background-image: url('../images/DarkIconWhiteSmall.svg');
+        }
+      }
+    }
+
+    .toggle-btn__input:checked ~ .toggle-btn__theme {
+      &:after {
+        // theme switch circle background in light theme
+        background: #fff;
+        left: calc(100% - 3px);
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  .toggle-btn__input:checked ~ .toggle-btn__input-label {
+    background-color: #666666;
+  }
+}
+
+
+/*hero styles*/
+
+.hero {
+  text-align: center;
+  margin-top: 190px;
+
+  @include breakpoint(sm, max) {
+    margin: 140px 30px 0 30px;
+  }
+
+  .hero-content {
+
+    img {
+
+      @include breakpoint(xxl, max) {
+        width: 82px;
+        height: 83.05px;
+      }
+
+      @include breakpoint(sm, max) {
+        width: 62px;
+        height: 63.05px;
+      }
+    }
+
+    .hero-header {
+      margin-top: 0px;
+      margin-bottom: 30px;
+      font-size: 90px;
+      font-weight: 500;
+      @include themify($themes) {
+        color: themed('colorHeader');
+      }
+      @include breakpoint(xxl, max) {
+        font-size: 80px;
+        margin: 20px 60px 0 60px;
+        line-height: 90px;
+      }
+      @include breakpoint(lg, max) {
+        font-size: 45px;
+        margin: 20px 30px 0px 30px;
+        line-height: 40px;
+        
+      }
+      @include breakpoint(sm, max) {
+        font-size: 40px;
+        margin: 20px 0px 0px 0px;
+        
+      }
+    }
+
+    .hero-text {
+      font-size: 26px;
+
+      @include themify($themes) {
+        color: themed('colorText');
+      }
+      @include breakpoint(xxl, max) {
+        font-size: 24px;
+        margin-top: 30px;
+      }
+      @include breakpoint(sm, max) {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      
+      span {
+        color: #6ED47C;
+      }
+    }
+
+    .hero-textBottom {
+      font-size: 20px;
+      font-weight: 400;
+      width: 381px;
+      margin: 20px auto 0px auto;
+      @include themify($themes) {
+        color: themed('colorFormFooterTxt');
+      }
+      @include breakpoint(sm, max) {
+        font-size: 40px;
+        width: 320px;
+        margin: 20px auto 0px auto;
+        font-size: 13px;
+        padding: 10px 30px;
+      }
+    }
+  }
+}
+
+// Form styling
+
+form {
+  margin-top: 50px;
+  @include breakpoint(xxl, max) {
+   margin-top: 30px;
+  }
+
+  input {
+    width: 597px;
+    height: 79px;
+    border-radius: 18px;
+    padding: 24px 10px 24px 23px;
+    margin-bottom: 10px;
+    font-size: 26px;
+    border: none;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    outline: none;
+
+    @include themify($themes) {
+      background-color: themed('colorFormInputBg');
+      color: themed('colorFormInputTxt');
+    }
+
+    ::placeholder {
+      font-family: "Outfit", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-size: 24px;
+      @include themify($themes) {
+        color: themed('colorFormInputTxt');
+      }
+    }
+
+    @include breakpoint(xxl, max) {
+      width: 537px;
+      height: 70px;
+      font-size: 24px;
+      border-radius: 16px;
+    }
+    @include breakpoint(sm, max) {
+      width: 324px;
+      height: 55px;
+      font-size: 16px;
+      border-radius: 18px;
+      padding: 18px 10px 18px 23px;
+    }
+  }
+
+  button {
+    text-align: center;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 26px;
+    width: 597px;
+    height: 79px;
+    padding: 24px 10px 24px 23px;
+    background-color: #00C567;
+    border-radius: 18px;
+    border: none;
+    outline: none;
+
+    @include breakpoint(xxl, max) {
+      width: 537px;
+      height: 70px;
+      font-size: 24px;
+      border-radius: 16px;
+      padding: 18px 10px 20px 23px;
+    }
+
+    @include breakpoint(sm, max) {
+      width: 324px;
+      height: 55px;
+      font-size: 16px;
+      border-radius: 18px;
+      padding: 10px 10px 10px 10px;
+    }
+
+  }
+}
+
+// Details section
+
+.details {
+  padding: 100px 140px 60px 140px;
+
+  @include breakpoint(xxl, max) {
+    padding: 100px 140px 60px 140px;
+  }
+
+  @include breakpoint(xxl, max) {
+    padding: 100px 80px 60px 80px;
+  }
+
+  @include breakpoint(sm, max) {
+    font-size: 36px;
+    padding: 20px 30px 60px 30px;
+    margin-top: 20px;
+  }
+  .details-header {
+    width: 720px;
+    font-size: 64px;
+    font-weight: 500;
+    @include themify($themes) {
+      color: themed('colorText');
+    }
+    @include breakpoint(xxl, max) {
+      font-size: 60px;
+    }
+    @include breakpoint(sm, max) {
+      font-size: 36px;
+      width: 247px;
+    }
+
+    .invest {
+      color: #00C567;
+    }
+
+    .real {
+      color: #FF743C;
+    }
+  }
+
+  .details-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    @include themify($themes) {
+      color: themed('colorText');
+    }
+    @include breakpoint(sm, max) {
+      display: block;
+    }
+    @include breakpoint(lg, max) {
+      gap: 60px;
+    }
+
+    .left {
+
+      img {
+        margin-bottom: 20px;
+
+        @include breakpoint(sm, max) {
+          width: 63.92px;
+          height: 65px;
+          margin-top: 40px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .details-main-header {
+        font-size: 40px;
+        margin-bottom: 10px;
+        @include breakpoint(xxl, max) {
+          font-size: 35px;
+          font-weight: 500;
+        }
+        @include breakpoint(xl, max) {
+          font-size: 30px;
+          font-weight: 500;
+        }
+        @include breakpoint(sm, max) {
+          font-size: 24px;
+          font-weight: 500;
+        }
+      }
+
+      .details-main-text {
+        font-size: 26px;
+
+        @include breakpoint(xxl, max) {
+          font-size: 24px;
+        }
+
+        @include breakpoint(xl, max) {
+          font-size: 20px;
+        }
+
+        @include breakpoint(sm, max) {
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+
+      .second {
+        margin-top: 100px;
+
+        @include breakpoint(xxl, max) {
+          margin-top: 75px;
+        }
+
+        @include breakpoint(sm, max) {
+          margin-top: 5px;
+        }
+      }
+    }
+    .right {
+      @include breakpoint(sm, max) {
+        margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img {
+        @include breakpoint(xxl, max) {
+          width: 350px;
+          height: 800px;
+          justify-self: right;
+        }
+        @include breakpoint(xl, max) {
+          width: 250px;
+          height: 700px;
+        }
+        @include breakpoint(sm, max) {
+          width: 255px;
+          height: 522px;
+        }
+      }
+    }
+  }
+}
+
+// waitlist styles
+
+.waitlist {
+  text-align: center;
+
+  .waitlist-heading {
+    position: relative;
+    @include themify($themes) {
+      color: themed('colorText');
+    }
+  
+    p {
+      position: relative;
+      padding: 0 40px; // Adjust padding to make space for the icons
+      font-size: 55px;
+      width: 793px;
+      font-weight: 500;
+      margin: 40px auto 20px auto;
+      text-align: center;
+
+      @include breakpoint(xxl, max) {
+        font-size: 45px;
+        
+      }
+      @include breakpoint(sm, max) {
+        font-size: 29.37px;
+        width: 100vw;
+        margin: 0;
+        
+      }
+  
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 36.7px;  // Adjust based on icon size
+        height: 30px; // Adjust based on icon size
+        background-size: contain;
+        background-repeat: no-repeat;
+        @include breakpoint(sm, max) {
+         width: 15.94px;
+         height: 13.02px;
+          
+        }
+      }
+  
+      &::before {
+        left: 66px;
+        top: 0%;
+        transform: translateY(-50%);
+        background-image: url('../images/quotesLeft.svg'); // Replace with the actual path to your SVG
+        @include breakpoint(sm, max) {
+          left: 30px;
+           
+         }
+      }
+  
+      &::after {
+        right: 29%;
+        bottom: 5%;
+        transform: translateY(-50%);
+        background-image: url('../images/quotesRight.svg'); // Replace with the actual path to your SVG
+      }
+    }
+  }
+  
+  .waitlist-header {
+    width: 253px;
+    margin: 80px auto 0 auto;
+    height: 62px;
+    display: flex;
+    font-weight: 500;
+    font-size: 29.85px;
+    justify-content: center;
+    white-space: nowrap;
+    align-items: center;
+    border-radius: 27.56px;
+    padding: 11.48px 20.67px 11.48px 20.67px;
+    border: 2.3px solid #00C567;
+    @include breakpoint(xxl, max) {
+      margin: 55px auto 0 auto;
+     }
+  
+    @include breakpoint(sm, max) {
+      width: 138px;
+      height: 33.82px;
+      border-radius: 15.03px;
+      font-size: 16.28px;
+      border: none;
+      margin-top: 40px;
+       
+     }
+  
+    @include themify($themes) {
+      background-color: themed('colorFormHeaderBg');
+      color: themed('colorText');
+    }
+  }
+}
+
+
+/*Layout wrapper styles*/
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 78px);
+}
+
+/*Footer styles*/
+.footer {
+  margin: 150px 40px 40px 40px;
+  z-index: 99;
+  padding: 80px 60px 40px 60px;
+  border-radius: 32px;
+  @include themify($themes) {
+    background: themed('colorFooterBg');
+    color: themed('colorText');
+  }
+  @include breakpoint(sm, max) {
+    margin: 60px 15px 40px 15px;
+    padding: 20px 20px 20px 20px;
+   }
+  .footer-content {
+    // max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+
+    @include breakpoint(lg, max) {
+      flex-direction: column;
+     }
+
+    .left-side {
+      
+      img {
+        margin-bottom: 20px;
+      }
+      .left-side-logo {
+        width: 184px;
+        height: 45px;
+        margin-bottom: 0px;
+      }
+      .first-text {
+        font-size: 17.46px;
+        margin-bottom: 30px;
+        @include themify($themes) {
+          color: themed('colorFooterAppreciateText');
+        }
+        @include breakpoint(lg, max) {
+          font-size: 10.86px;
+          margin-bottom: 10px;
+         }
+      }
+
+      .second-text {
+        font-size: 17px;
+        margin-bottom: 30px;
+        width: 534px;
+        font-weight: 500;
+
+        @include breakpoint(lg, max) {
+          width: 100%;
+          font-size: 15px;
+          padding-right: 30px;
+         }
+      }
+
+      .partnered {
+        font-size: 17.46px;
+        margin-bottom: 20px;
+        @include breakpoint(lg, max) {
+          margin-top: 50px;
+         }
+      }
+
+    }
+
+    .right-side {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+
+      .heading {
+        font-size: 21px;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      ul {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      .socials {
+        li {
+          margin-bottom: 50px;
+          @include breakpoint(sm, max) {
+            margin-bottom: 30px;
+           }
+        }
+
+        a {
+          text-decoration: none;
+          font-weight: 500;
+          @include themify($themes) {
+            color: themed('colorFooterLinks');
+          }
+        }
+      }
+
+      .reach-out {
+        a {
+          @include themify($themes) {
+            color: themed('colorReachOut');
+            font-weight: 500;
+          }
+        }
+        li {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    @include breakpoint(sm, max) {
+      font-size: 11.9px;
+      padding: 0 20px;
+      padding-top: 10px;
+      font-weight: 500;
+      border-top: .53px solid #AAAAAA;
+     }
+  }
+}
