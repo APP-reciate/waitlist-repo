@@ -2,6 +2,7 @@ import { FC, useContext } from 'react';
 import { ThemeContext } from '../contexts/theme-context';
 
 import logoIcon from '../images/appreciate.svg';
+import bgImg from '../images/rhone.svg';
 import './styles.scss';
 
 const Header: FC = () => {
@@ -15,6 +16,10 @@ const Header: FC = () => {
 
   return (
     <>
+    <div className="image-container">
+      <img src={bgImg} alt="Rotated Image" />
+    </div>
+
       <header className="header">
         <div className="header-content">
           <a href="/" className="logo-section">

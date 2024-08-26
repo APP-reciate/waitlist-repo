@@ -1,6 +1,30 @@
 @import '../styles/theme-variables.scss';
 @import '../styles/breakpoints.scss';
 
+// Background Image
+.image-container {
+  position: absolute;
+  left: -10%;
+  top: 30%;
+  overflow: hidden;
+  z-index: -1000;
+
+  @include breakpoint(sm, max) {
+    top: 30%;
+    left: -45%;
+  }
+   /* Adjust this to control the visible part of the image */
+
+  // img {
+  //   position: absolute;
+  //   transform-origin: bottom left;
+  //   transform: rotate(-135deg); /* Rotate the image */
+  //   width: 600px; /* Adjust these dimensions based on your image size */
+  //   height: 600px;
+  //   left: -200px; /* Adjust this to position the image correctly */
+  //   top: -300px; /* Adjust this to position the image correctly */
+  // }
+}
 
 /*Header styles*/
 .header {
