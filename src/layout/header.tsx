@@ -1,11 +1,15 @@
-import { FC, useContext } from 'react';
+import React, { FC, forwardRef, RefObject, useContext } from 'react';
 import { ThemeContext } from '../contexts/theme-context';
 
 import logoIcon from '../images/appreciate.svg';
-import bgImg from '../images/rhone.svg';
+import bgImg from '../images/Rhone1.png';
 import './styles.scss';
 
-const Header: FC = () => {
+interface HeaderProps {
+  buttonRef: RefObject<HTMLElement>;
+}
+
+const Header: FC<HeaderProps> = forwardRef<HTMLDivElement, HeaderProps>(({ buttonRef }: HeaderProps) => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const handleThemeChange = () => {
@@ -26,7 +30,9 @@ const Header: FC = () => {
             <img src={logoIcon} alt="logo" />
           </a>
         </div>
-        <button className='header-button'>
+        <button onClick={() => buttonRef.current?.scrollIntoView({
+          behavior: 'smooth'
+        })} className='header-button'>
             Join the waitlist
         </button>
       </header>
@@ -44,6 +50,6 @@ const Header: FC = () => {
         </div>
     </>
   );
-};
+});
 
 export default Header;

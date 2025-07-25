@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,16 +21,33 @@ const firebaseApp = initializeApp({
     name: string,
     email: string,
   }
+
+  type AddUserResult = 
+    | { status: "duplicate"; message: string }
+    | { status: "success"; id: string }
+    | { status: "error"; error: any }
+    | undefined;
   
   // Initialize Firebase
 const db = getFirestore(firebaseApp);
 
-export const userCollection = async(userDoc: UserDoc) => {
+export const userCollection = async(userDoc: UserDoc): Promise<AddUserResult> => {
     console.log(userDoc)
     try {
-        const docRef = await addDoc(collection(db, "users"), userDoc);
-        console.log("Document written with ID", docRef.id)
-        return docRef;
+        const q = query(collection(db, "users"), where("email", "==", userDoc.email));
+        const querySnapShot = await getDocs(q);
+
+        if(!querySnapShot.empty) {
+          const message = "A user with this email already exists.";
+          console.log(message);
+          return { status: "duplicate", message }
+          
+        } else {
+          const docRef = await addDoc(collection(db, "users"), userDoc);
+          console.log("Document written with ID", docRef.id)
+          return { status: "success", id: docRef.id };
+        }
+      
     } catch (e) {
         console.error("Error adding document: ", e);
     }

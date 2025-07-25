@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import './styles.scss';
 import smallLogo from '../images/logoSmall.svg';
-import iphone from '../images/iPhone15.svg'
+import iphone from '../images/iPhone15.png'
 
 const Details: FC = () => {
 

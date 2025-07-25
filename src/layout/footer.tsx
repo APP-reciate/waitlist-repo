@@ -21,14 +21,14 @@ const Footer: FC = () => {
               <li><a href="#">Instagram</a></li>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Youtube</a></li>
-              <li><a href="#">LinkedIn</a></li>
+              <li><a href="https://www.linkedin.com/company/appreciate-alx-24/posts/?feedView=all">LinkedIn</a></li>
             </ul>
           </div>
           <div className="reach-out">
             <h1 className="heading">Reach Out</h1>
             <ul>
-              <li><a href="#">+234-888-8888-888</a></li>
-              <li><a href="#">askus@appreciate.com</a></li>
+              <li><a href="#">+234-810-6291-369</a></li>
+              <li><a href="#">letsappreciatehq@gmail.com</a></li>
             </ul>
           </div>
         </div>

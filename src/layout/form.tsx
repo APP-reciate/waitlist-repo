@@ -17,30 +17,39 @@ const Form: FC = () => {
 
   const handleRegistration: SubmitHandler<FormData> = async (data) => {
     setLoading(true);
-    try {
-      await userCollection(data);
-      enqueueSnackbar("You have successfully joined the waitlist!", { variant: "success", persist: true });
-    } catch (e) {
-      enqueueSnackbar("Failed to join the waitlist. Please try again.", { variant: "error", persist: true });
-    } finally {
-      setLoading(false);
-    }
+    
+      const result = await userCollection(data);
 
+      if (!result) {
+        enqueueSnackbar("An unknown error occurred.", { autoHideDuration: 6000, variant: "error" });
+        return;
+      }
+      if (result.status === "duplicate") {
+        enqueueSnackbar(result.message, { autoHideDuration: 6000, variant: "error" });
+        setLoading(false);
+    } else if (result.status === "success") {
+        enqueueSnackbar("User added successfully!", { autoHideDuration: 6000, variant: "success" });
+        setLoading(false);
+    } else {
+        enqueueSnackbar("An error occurred while adding the user.", { autoHideDuration: 6000, variant: "error" });
+        setLoading(false);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(handleRegistration)}>
-      <SnackbarProvider />
-      <div>
-        <input {...register('name', { required: true })} placeholder='Tell us your name'/>
-      </div>
-      {errors.name && <p>This field is required*</p>}
-      <div>
-        <input type="email" {...register('email', { required: true })} placeholder='Enter your email address'/>
-      </div>
-      {errors.email && <p>This field is required*</p>}
-      <button type='submit' disabled={loading}>{loading ? <CircularProgress sx={{ color: '#000000' }} size={24} /> : 'Join our waitlist'}</button>
-    </form>
+    <SnackbarProvider autoHideDuration={6000} >
+      <form onSubmit={handleSubmit(handleRegistration)}>
+        <div>
+          <input {...register('name', { required: true })} placeholder='Tell us your name'/>
+        </div>
+        {errors.name && <p>This field is required*</p>}
+        <div>
+          <input type="email" {...register('email', { required: true })} placeholder='Enter your email address'/>
+        </div>
+        {errors.email && <p>This field is required*</p>}
+        <button type='submit' disabled={loading}>{loading ? <CircularProgress sx={{ color: '#000000' }} size={24} /> : 'Join our waitlist'}</button>
+      </form>
+    </SnackbarProvider>
   );
 };
 

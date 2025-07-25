@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useRef } from 'react';
 import Header from './header';
 import Footer from './footer';
 import './styles.scss';
@@ -11,14 +11,15 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = () => {
+  const myRef = useRef<HTMLElement | null>(null);
   return (
     <div className="">
       <div className="">
-        <Header />
+        <Header buttonRef = {myRef} />
         <Hero />
       </div>
       <Details />
-      <Waitlist />
+      <Waitlist waitlistRef={myRef} />
       <Footer />
     </div>
   );

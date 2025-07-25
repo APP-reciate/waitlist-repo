@@ -1,13 +1,15 @@
-import { FC } from 'react';
+import { FC, forwardRef, RefObject } from 'react';
 import './styles.scss';
-import smallLogo from '../images/logoSmall.svg';
-import iphone from '../images/iPhone15.svg'
 import Form from './form';
 
-const Waitlist: FC = () => {
+interface WaitlistProps {
+  waitlistRef: RefObject<HTMLElement>;
+}
+
+const Waitlist: FC<WaitlistProps> = forwardRef<HTMLElement, WaitlistProps>(( { waitlistRef }: WaitlistProps ) => {
 
   return (
-    <section className="waitlist">
+    <section  ref={waitlistRef} className="waitlist">
         <div className="waitlist-heading">
             <p>
             We’re creating a whole new different wealth building experience
@@ -17,6 +19,6 @@ const Waitlist: FC = () => {
         <Form />
     </section>
   );
-};
+});
 
 export default Waitlist;
